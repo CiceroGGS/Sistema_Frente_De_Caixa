@@ -47,6 +47,7 @@ CREATE TABLE
         cliente_id INT REFERENCES clientes(id),
         observacao TEXT,
         valor_total FLOAT
+        email TEXT
     );
 
 CREATE TABLE

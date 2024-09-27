@@ -6,11 +6,15 @@ const schemaPedido = joi.object({
         'number.base': 'Deve ser passado um ID válido para cliente'
     }),
     observacao: joi.string().messages({
-        'string.empty': 'Obeservação não pode esta vazio'
+        'string.empty': 'Observação não pode estar vazia'
+    }),
+    email: joi.string().email().required().messages({
+        'string.empty': 'Campo email obrigatório',
+        'string.email': 'Deve ser um email válido'
     }),
     pedido_produtos: joi.array()
-        .min(1).
-        items(
+        .min(1)
+        .items(
             joi.object({
                 produto_id: joi.number().required().messages({
                     'any.required': 'Campo produto_id obrigatório',
@@ -18,7 +22,7 @@ const schemaPedido = joi.object({
                 }),
                 quantidade_produto: joi.number().min(1).required().messages({
                     'any.required': 'Campo quantidade_produto obrigatório',
-                    'number.base': 'Campo quantidade deve ser preenchida corretamente',
+                    'number.base': 'Campo quantidade deve ser preenchido corretamente',
                     'number.min': 'Quantidade inválida'
                 })
             })
@@ -27,5 +31,6 @@ const schemaPedido = joi.object({
             'array.min': 'Pedido vazio, deve selecionar ao menos um item válido'
         })
 });
+
 
 module.exports = schemaPedido;

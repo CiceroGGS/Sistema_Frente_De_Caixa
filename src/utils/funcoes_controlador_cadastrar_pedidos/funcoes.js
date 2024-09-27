@@ -31,7 +31,7 @@ const inserirProdutosDoPedido = async (resposta, pedido_id) => {
     };
 };
 
-const enviarEmail = async () => {
+const enviarEmail = async (destinatario) => {
 
     let transport = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -44,13 +44,18 @@ const enviarEmail = async () => {
 
     let message = {
         from: "cicerog.silvestre@gmail.com",
-        to: "cicerog.silvestre@gmail.com",
+        to: destinatario,
         subject: "Message title",
         text: "Plaintext version of the message",
         html: "<p>Seu pedido foi confirmado com sucesso!</p>"
     };
 
-    transport.sendMail(message);
+    await transport.sendMail(message, (error, info) => {
+        if (error) {
+            return console.log("Erro ao enviar e-mail: ", error);
+        }
+        console.log("E-mail enviado: ", info.response);
+    });
 }
 
 module.exports = {
