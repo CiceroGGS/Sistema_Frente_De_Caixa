@@ -16,6 +16,8 @@ const cadastrarPedido = async (req, res) => {
         return res.status(201).json({ mensagem: 'Pedido cadastrado.' });
 
     } catch (error) {
+        console.log(error);
+
         return res.status(500).json({ mensagem: `Ocorreu um erro ${error.message}` });
     }
 };
