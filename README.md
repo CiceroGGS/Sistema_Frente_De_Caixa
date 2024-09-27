@@ -18,7 +18,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **Knex**: Query builder para facilitar a criação das queries.
 - **JWT** e **Bcryptjs**: Para autenticação e validação dos usuários ao utilizar os endpoints.
 - **Joi**: Para validação dos endpoints.
-- **Nodemailer**: Para envio de emails.
+- **Nodemailer**: Uma biblioteca Node.js para envio de emails, integrada com o Mailtrap.io para testes e desenvolvimento seguro.
 
 ## 🚀 Como executar o projeto
 
