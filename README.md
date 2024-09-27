@@ -69,7 +69,7 @@ sistema-frente-de-caixa/
 │   ├── servidor.js
 │   └── ...
 ├── .env
-├── dump.sq;
+├── dump.sql;
 |── package-lock.json
 ├── package.json
 └── README.md
