@@ -11,7 +11,7 @@ const cadastrarPedido = async (req, res) => {
         const { id } = pedidoId[0];
         await inserirProdutosDoPedido(resposta, id);
 
-        await enviarEmail(email);
+        await enviarEmail(email, observacao);
 
         return res.status(201).json({ mensagem: 'Pedido cadastrado.' });
 

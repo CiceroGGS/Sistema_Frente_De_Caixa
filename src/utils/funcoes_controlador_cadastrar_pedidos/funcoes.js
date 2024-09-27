@@ -2,6 +2,7 @@ const knex = require('../../conexao');
 const nodemailer = require("nodemailer");
 
 const calcularValorPedido = async (pedido_produtos, produtosNaCesta) => {
+
     let valorPedido = 0;
     const resposta = [];
 
@@ -33,7 +34,7 @@ const inserirProdutosDoPedido = async (resposta, pedido_id) => {
     };
 };
 
-const enviarEmail = async (destinatario) => {
+const enviarEmail = async (destinatario, observacao) => {
 
     let transport = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -49,7 +50,11 @@ const enviarEmail = async (destinatario) => {
         to: destinatario,
         subject: "Message title",
         text: "Plaintext version of the message",
-        html: "<p>Seu pedido foi confirmado com sucesso!</p>"
+        html:
+            `
+            <p>Seu pedido foi confirmado com sucesso!</p>
+            <p><strong>Observação:</strong> ${observacao}</p>
+            `
     };
 
     await transport.sendMail(message, (error, info) => {
