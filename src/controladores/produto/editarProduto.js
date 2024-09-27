@@ -1,16 +1,24 @@
 const knex = require("../../conexao");
 
 const editarProduto = async (req, res) => {
+
   const { id } = req.params;
   const { descricao, quantidade_estoque, valor, categoria_id } = req.body;
 
   try {
 
-    await atualizarProdutoNoBanco(id, descricao, quantidade_estoque, valor, categoria_id);
+    const atualizarProdutoNoBanco = async (id, descricao, quantidade_estoque, valor, categoria_id) => {
+      await knex('produtos')
+        .where({ id })
+        .update({
+          descricao,
+          quantidade_estoque,
+          valor,
+          categoria_id
+        });
+    };
 
-    if (req.file) {
-      await atualizarImagemDoProduto(id, req.file)
-    }
+    await atualizarProdutoNoBanco(id, descricao, quantidade_estoque, valor, categoria_id);
 
     return res.status(204).send();
 
@@ -20,5 +28,6 @@ const editarProduto = async (req, res) => {
       .json({ mensagem: `Ocorreu um erro interno ${error.message}` });
   }
 };
+
 
 module.exports = editarProduto;

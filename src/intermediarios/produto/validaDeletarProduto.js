@@ -1,6 +1,7 @@
 const knex = require('../../conexao');
 
 const validaDeletarProduto = async (req, res, next) => {
+
     const { id } = req.params;
     const { categoria_id } = req.body;
 

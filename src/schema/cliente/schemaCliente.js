@@ -15,12 +15,12 @@ const schemaCadastroCliente = Joi.object({
   cpf: Joi.string().required().length(11).regex(/^\d+$/).messages({
     "any.required": "Campo CPF é obrigatório",
     "string.empty": "Campo CPF não pode ser vazio",
-    "string.length": "O campo CPF deve conter 11 dígitos",
+    "string.length": "O campo CPF deve conter 11 dígitos e deve conter apenas números",
     "string.pattern.base": "O CPF deve conter apenas números",
     "string.base": "Formato inválido, deve ser tipo texto",
   }),
   cep: Joi.string().length(8).regex(/^\d+$/).allow("").messages({
-    "string.length": "O CEP deve conter exatamente 8 dígitos",
+    "string.length": "O CEP deve conter exatamente 8 dígitos e deve conter apenas números",
     "string.pattern.base": "O CEP deve conter apenas números",
     "string.base": "Formato inválido, deve ser tipo texto",
   }),

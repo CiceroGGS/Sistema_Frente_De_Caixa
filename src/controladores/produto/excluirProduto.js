@@ -1,6 +1,7 @@
 const knex = require("../../conexao");
 
 const excluirProduto = async (req, res) => {
+
     const { id } = req.params;
 
     try {
@@ -13,5 +14,6 @@ const excluirProduto = async (req, res) => {
         return res.status(500).json({ mensagem: `Ocorreu um erro interno ${error.message}` });
     }
 };
+
 
 module.exports = excluirProduto;
