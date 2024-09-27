@@ -1,6 +1,7 @@
 const knex = require("../../conexao");
 
 const detalharProduto = async (req, res) => {
+
   const { id } = req.params;
 
   try {

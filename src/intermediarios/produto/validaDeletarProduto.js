@@ -18,11 +18,11 @@ const validaDeletarProduto = async (req, res, next) => {
             return res.status(400).json({ mensagem: "Não é possível remover o produto, pois existem pedidos relacionados a ele." });
         }
 
-        const categoria = await knex('categorias').where({ id: categoria_id }).first();
+        const produtoCategoria = produto.categoria_id;
 
-        if (!categoria) {
-            return res.status(404).json({ mensagem: 'Categoria de produto não cadastrada.' })
-        };
+        if (produtoCategoria !== categoria_id) {
+            return res.status(400).json({ mensagem: 'A categoria do produto não corresponde à categoria informada.' });
+        }
 
         next();
 
@@ -30,5 +30,6 @@ const validaDeletarProduto = async (req, res, next) => {
         return res.status(500).json({ mensagem: error.message });
     };
 };
+
 
 module.exports = validaDeletarProduto;

@@ -1,6 +1,7 @@
 const knex = require("../../conexao");
 
 const validaIdPedido = async (req, res, next) => {
+
     const { cliente_id } = req.body;
 
     try {
@@ -17,5 +18,6 @@ const validaIdPedido = async (req, res, next) => {
         return res.status(500).json({ mensagem: `Ocorreu um erro interno do servidor: ${error.message}` });
     }
 }
+
 
 module.exports = validaIdPedido;

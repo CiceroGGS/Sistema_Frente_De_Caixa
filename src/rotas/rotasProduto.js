@@ -1,6 +1,8 @@
 const express = require("express");
 const rotas = express.Router();
 
+const autenticaUsuario = require("../intermediarios/usuario/autenticacaoUsuario.js");
+
 const cadastrarProduto = require("../controladores/produto/cadastrarProduto.js");
 const excluirProduto = require("../controladores/produto/excluirProduto.js");
 const detalharProduto = require("../controladores/produto/detalharProduto.js");
@@ -15,6 +17,8 @@ const validaDeletarProduto = require("../intermediarios/produto/validaDeletarPro
 
 const validarSchema = require("../intermediarios/validarSchema.js");
 const schemaProduto = require('../schema/produto/schemaProduto.js');
+
+rotas.use('/produto', autenticaUsuario);
 
 rotas.post('/produto', validarSchema(schemaProduto), validaCategoriaId, cadastrarProduto);
 rotas.put('/produto/:id', validaProdutoId, validarSchema(schemaProduto), validaCategoriaId, editarProduto);

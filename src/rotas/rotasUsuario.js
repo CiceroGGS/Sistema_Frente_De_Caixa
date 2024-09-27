@@ -1,8 +1,9 @@
 const express = require("express");
 const rotas = express.Router();
 
-const verificaLogin = require("../intermediarios/usuario/verificaLoginUsuario.js");
 const autenticaUsuario = require("../intermediarios/usuario/autenticacaoUsuario.js");
+
+const verificaLogin = require("../intermediarios/usuario/verificaLoginUsuario.js");
 const verificaEmail = require("../intermediarios/usuario/verificaEmailUsuario.js");
 
 const cadastrarUsuario = require("../controladores/usuario/cadastrarUsuario.js");
@@ -17,7 +18,7 @@ const schemaUsuario = require("../schema/usuario/schemaUsuario.js");
 rotas.post('/usuario', validarSchema(schemaUsuario), verificaEmail, cadastrarUsuario);
 rotas.post('/login', validarSchema(schemaLogin), verificaLogin, loginUsuario);
 
-rotas.use(autenticaUsuario);
+rotas.use('/usuario', autenticaUsuario);
 
 rotas.put('/usuario', validarSchema(schemaUsuario), verificaEmail, atualizarUsuario);
 rotas.get('/usuario', detalharUsuario);

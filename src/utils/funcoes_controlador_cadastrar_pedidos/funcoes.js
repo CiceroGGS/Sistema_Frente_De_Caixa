@@ -9,10 +9,12 @@ const calcularValorPedido = async (pedido_produtos, produtosNaCesta) => {
         const produto = produtosNaCesta.find(p => p.id === cestaProduto.produto_id);
         if (produto) {
             valorPedido += cestaProduto.quantidade_produto * produto.valor;
+
             resposta.push({
                 produto_id: produto.id,
                 quantidade_produto: cestaProduto.quantidade_produto,
-                valor_produto: produto.valor
+                valor_produto: produto.valor.toFixed(2)
+
             });
         };
     };

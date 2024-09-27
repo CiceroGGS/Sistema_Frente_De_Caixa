@@ -11,8 +11,8 @@ const rotasPedidos = require("./rotas/rotasPedido");
 
 app.use(express.json());
 
-app.use("/", rotasUsuario);
 app.use("/", rotasCategoria);
+app.use("/", rotasUsuario);
 app.use("/", rotasProduto);
 app.use("/", rotasCliente);
 app.use("/", rotasPedidos);

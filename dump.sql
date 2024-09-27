@@ -23,7 +23,7 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         descricao TEXT NOT NULL,
         quantidade_estoque INT,
-        valor INT,
+        valor FLOAT,
         categoria_id INT REFERENCES categorias(id)
     );
 

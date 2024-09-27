@@ -33,4 +33,5 @@ const validaListarProduto = async (req, res, next) => {
     }
 };
 
+
 module.exports = validaListarProduto;
