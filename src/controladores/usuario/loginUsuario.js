@@ -1,14 +1,16 @@
 const knex = require("../../conexao");
 const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
 
 const loginUsuario = async (req, res) => {
+
     const { email, senha } = req.body
 
     try {
 
         const usuario = await knex("usuarios").where({ email }).first();
 
-        const verificaSenha = await bcript.compare(senha, usuario.senha);
+        const verificaSenha = await bcrypt.compare(senha, usuario.senha);
 
         if (!verificaSenha) {
             return res.status(400).json({ erro: "Ocorreu um erro" });

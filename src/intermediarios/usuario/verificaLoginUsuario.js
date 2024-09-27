@@ -2,10 +2,10 @@ const knex = require('../../conexao');
 const bcrypt = require('bcryptjs');
 
 const verificaLogin = async (req, res, next) => {
+
     const { email, senha } = req.body;
 
     try {
-
         const buscaUsuario = await knex('usuarios').select('*').where({ email }).first();
 
         if (!buscaUsuario) {
@@ -16,7 +16,7 @@ const verificaLogin = async (req, res, next) => {
 
         if (!verificaSenhaHash) {
             return res.status(403).json({ mensagem: 'Email ou senha inválidos' });
-        };
+        }
 
         req.usuario = buscaUsuario;
 
@@ -26,6 +26,5 @@ const verificaLogin = async (req, res, next) => {
         return res.status(500).json({ mensagem: error.message });
     }
 };
-
 
 module.exports = verificaLogin;

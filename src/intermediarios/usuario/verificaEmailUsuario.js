@@ -1,14 +1,15 @@
 const knex = require("../../conexao");
 
 const verificaEmail = async (req, res, next) => {
+
     const { email } = req.body;
 
     try {
 
-        const queryBuscarEmail = await knex("usuarios").where({ email });
+        const buscaUsuario = await knex('usuarios').select('*').where({ email }).first();
 
-        if (queryBuscarEmail) {
-            return res.status(400).json({ mensagem: "O email informado já foi utilizado." });
+        if (buscaUsuario) {
+            return res.status(409).json({ mensagem: 'O email informado já foi utilizado.' });
         }
 
         next();

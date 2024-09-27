@@ -12,14 +12,14 @@ const atualizarUsuario = require("../controladores/usuario/atualizarUsuario.js")
 
 const validarSchema = require("../intermediarios/validarSchema.js");
 const schemaLogin = require("../schema/usuario/schemaLogin");
-const schemaCadastrar = require("../schema/usuario/schemaCadastro.js");
+const schemaUsuario = require("../schema/usuario/schemaUsuario.js");
 
-rotas.post('/usuario', validarSchema(schemaCadastrar), verificaEmail, cadastrarUsuario);
+rotas.post('/usuario', validarSchema(schemaUsuario), verificaEmail, cadastrarUsuario);
 rotas.post('/login', validarSchema(schemaLogin), verificaLogin, loginUsuario);
 
 rotas.use(autenticaUsuario);
 
-rotas.put('/usuario', validarSchema(schemaCadastrar), verificaEmail, atualizarUsuario);
+rotas.put('/usuario', validarSchema(schemaUsuario), verificaEmail, atualizarUsuario);
 rotas.get('/usuario', detalharUsuario);
 
 
