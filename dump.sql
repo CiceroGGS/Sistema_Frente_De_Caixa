@@ -55,5 +55,5 @@ CREATE TABLE
         pedido_id INT REFERENCES pedidos(id),
         produto_id INT REFERENCES produtos(id),
         quantidade_produto INT,
-        valor_produto INT
+        valor_produto FLOAT
     );
