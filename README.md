@@ -180,5 +180,11 @@ sistema-frente-de-caixa/
 - **Listar Pedidos (GET)**  
   `http://localhost:3000/pedido/`
 
-## 📬 Contato
-Para mais informações, entre em contato com [Cicero Guilherme](mailto:cicerog.silvestre@gmail.com).
+## 🤝 Como Contribuir
+	1-Faça um fork do projeto
+	2-Crie sua branch: git checkout -b feature/nova-feature
+	3-Commit suas mudanças: git commit -m 'Adiciona recurso X'
+	4-Push para o repositório: git push origin feature/nova-feature
+	5-Abra um Pull Request
+
+📧 Contato: cicerog.silvestre@gmail.com
